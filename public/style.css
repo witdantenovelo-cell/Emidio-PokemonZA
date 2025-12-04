@@ -1,0 +1,258 @@
+/* style.css */
+body {
+    margin: 0;
+    font-family: 'Press Start 2P', cursive;
+    background: linear-gradient(180deg, #012C4A, #001A20);
+    color: #E6F7FB;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #004080;
+    padding: 15px 30px;
+    flex-wrap: wrap;
+}
+
+.brand h1 {
+    font-size: 16px;
+    margin: 0;
+}
+
+.brand p {
+    font-size: 10px;
+}
+
+.controls button {
+    margin-left: 10px;
+    padding: 10px 16px;
+    background-color: #00E5FF;
+    color: #001A20;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+main {
+    padding: 20px 30px;
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.zones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+}
+
+.zone {
+    background-color: rgba(4, 30, 45, 0.85);
+    border-radius: 14px;
+    padding: 15px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.3);
+    transition: transform 0.3s;
+}
+
+.zone:hover {
+    transform: scale(1.05);
+}
+
+.zone img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.zone ul {
+    list-style: none;
+    padding: 0;
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #002244;
+    font-size: 10px;
+}
+
+/* Modais */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+    background-color: #003366;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 12px;
+    width: 50%;
+    text-align: center;
+}
+
+.close {
+    color: #fff;
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .controls {
+    margin-top: 10px;
+  }
+
+  .zone {
+    width: 90%;
+  }
+
+  .brand h1 {
+    font-size: 12px;
+  }
+
+  .brand p {
+    font-size: 8px;
+  }
+
+  .modal-content {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .zone {
+    width: 100%;
+  }
+
+  header, footer {
+    padding: 10px;
+  }
+
+  button.btn {
+    padding: 8px 12px;
+    font-size: 8px;
+  }
+}
+/* ===== Modal da Câmera ===== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 30, 60, 0.7); /* Azul escuro translúcido */
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  position: relative;
+  background: linear-gradient(180deg, rgba(0,120,180,0.95), rgba(0,60,100,0.95));
+  border-radius: 18px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  max-width: 720px;
+  width: 92%;
+}
+
+.modal-title {
+  color: #ffffff;
+  margin: 6px 0 12px 0;
+  font-size: 18px;
+}
+
+.video-wrap {
+  width: 100%;
+  display:flex;
+  justify-content:center;
+}
+
+video#video {
+  border-radius: 12px;
+  width: 640px;
+  max-width: 100%;
+  height: auto;
+  background: #000;
+}
+
+.controls {
+  display:flex;
+  gap: 14px;
+  margin-top: 12px;
+  align-items:center;
+  justify-content:center;
+}
+
+/* Botão circular foto */
+.botao-foto {
+  background-color: #00c0e8;
+  border: none;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  font-size: 26px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color: #00324a;
+}
+
+/* Botão fechar (canto) */
+.botao-fechar {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255,255,255,0.06);
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* status text */
+.modal-status {
+  color: #e0f7ff;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+df-messenger {
+  transform: scale(0);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+df-messenger.aberto {
+  transform: scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}

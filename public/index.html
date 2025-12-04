@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zonas do Oceano — Curiosidades</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+      <!-- Bibliotecas -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.8.0/dist/tf.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+
+    <!-- Script principal -->
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <div class="brand">
+            <h1>Zonas do Oceano — Curiosidades</h1>
+            <p>Explore as camadas do oceano e os seres que vivem nelas!</p>
+        </div>
+        <div class="controls">
+            <button class="btn" id="abrirIA">IA de Reconhecimento</button>
+            <button class="btn" id="btnAbrirChatbot">Chat-bot</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Descubra as Profundezas do Oceano</h2>
+            <p>Do brilho da superfície até a escuridão abissal, conheça as zonas e os incríveis animais que habitam o maior mistério da Terra.</p>
+        </section>
+
+        <section class="zones">
+            <article class="zone">
+                <img src="static/20251030_1409_Zona Epipelágica_simple_compose_01k8v1d30qe4esw1vd3gk3wkw5.png" alt="Epipelágica">
+                <h3>🌞 Zona Epipelágica (0–200 m)</h3>
+                <p>É a camada mais iluminada e aquecida, onde ocorre a fotossíntese e vive a maior parte da vida marinha visível.</p>
+                <ul>
+                    <li>🐠 Peixes tropicais</li>
+                    <li>🐬 Golfinhos</li>
+                    <li>🐋 Baleias</li>
+                    <li>🐢 Tartarugas marinhas</li>
+                    <li>🐙 Polvos e corais</li>
+                </ul>
+            </article>
+
+            <article class="zone">
+                <img src="static/20251030_1411_Zona Mesopelágica_simple_compose_01k8v1h9qmeths5tpwr9r8wrst.png" alt="Mesopelágica">
+                <h3>🌆 Zona Mesopelágica (200–1000 m)</h3>
+                <p>Conhecida como "zona do crepúsculo", recebe pouca luz solar. Muitos animais aqui brilham no escuro (bioluminescência).</p>
+                <ul>
+                    <li>✨ Peixe-lanterna</li>
+                    <li>🦑 Lulas-vampiro</li>
+                    <li>🐟 Peixes-brilhosos</li>
+                    <li>🪱 Medusas translúcidas</li>
+                </ul>
+            </article>
+
+            <article class="zone">
+                <img src="static/20251030_1417_Zona Batipelágica Misteriosa_simple_compose_01k8v1wc0bfby9yzmygdq8knbk.png" alt="Batipelágica">
+                <h3>🌑 Zona Batipelágica (1000–4000 m)</h3>
+                <p>Ambiente totalmente escuro, com temperaturas próximas a 0°C e pressão intensa. Apenas os seres mais adaptados sobrevivem aqui.</p>
+                <ul>
+                    <li>👹 Peixe-diabo negro</li>
+                    <li>🐍 Enguias abissais</li>
+                    <li>🦑 Lulas-gigantes</li>
+                    <li>🐡 Peixes-fantasma</li>
+                </ul>
+            </article>
+
+            <article class="zone">
+                <img src="static/20251030_1413_Zona Abissopelágica_simple_compose_01k8v1qhexfvh88yh2437jdc7y.png" alt="Abissopelágica">
+                <h3>⚫ Zona Abissopelágica (4000–6000 m)</h3>
+                <p>Quase sem vida, fria e escura como o espaço. Criaturas estranhas e raras prosperam em total ausência de luz.</p>
+                <ul>
+                    <li>🪸 Pepinos-do-mar</li>
+                    <li>🦐 Camarões abissais</li>
+                    <li>🦑 Lulas de profundidade</li>
+                    <li>🐙 Polvos-fantasma</li>
+                </ul>
+            </article>
+
+            <article class="zone">
+                <img src="static/20251030_1415_Zona Hadal_simple_compose_01k8v1s64fe9mtdcepfskd1216.png" alt="Hadal">
+                <h3>🌀 Zona Hadal (6000–11000 m)</h3>
+                <p>Os pontos mais profundos do oceano, como a Fossa das Marianas. A pressão é extrema, mas a vida ainda resiste!</p>
+                <ul>
+                    <li>🦠 Microrganismos extremófilos</li>
+                    <li>🦑 Lulas ultra adaptadas</li>
+                    <li>🐡 Peixes hadais</li>
+                </ul>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Zonas do Oceano | Feito com curiosidade e amor pelo mar 🌊</p>
+    </footer>
+
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<df-messenger
+  intent="WELCOME"
+  chat-title="Robert"
+  agent-id="d396cafd-0d12-4f5a-bed2-ddbb355260d5"
+  language-code="pt-br"
+></df-messenger>
+
+      <!-- Modal da câmera (inicialmente escondido) -->
+  <div id="cameraModal" class="modal" aria-hidden="true" style="display:none;">
+    <div class="modal-content">
+      <button id="fecharModal" class="botao-fechar" title="Fechar">❌</button>
+      <h2 class="modal-title">Reconhecimento Facial</h2>
+      <div class="video-wrap">
+        <video id="video" autoplay muted playsinline></video>
+      </div>
+      <div class="controls">
+        <button id="tirarFoto" class="botao-foto" title="Tirar foto">📸</button>
+      </div>
+      <p id="modalStatus" class="modal-status">Aguardando...</p>
+      <canvas id="fotoCanvas" style="display:none;"></canvas>
+    </div>
+  </div>    
+
+</body>
+</html>

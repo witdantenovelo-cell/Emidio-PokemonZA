@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Resultado - Exploração do Oceano</title>
+
+<!-- Fonte estilo Pokémon -->
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<style>
+/* ======== ESTILO GERAL ======== */
+body {
+  margin: 0;
+  background: linear-gradient(180deg, #012C4A, #001A20);
+  color: #E6F7FB;
+  font-family: 'Press Start 2P', cursive;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+/* ======== TÍTULOS ======== */
+h1 {
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #00E5FF;
+}
+
+h2 {
+  margin-top: 5px;
+  color: #A0EFFF;
+  font-size: 14px;
+}
+
+p {
+  font-size: 10px;
+  margin-top: 8px;
+  margin-bottom: 25px;
+}
+
+/* ======== CARTÃO DE RESULTADO ======== */
+.card {
+  display: inline-block;
+  background: rgba(4, 30, 45, 0.85);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 0 18px rgba(0, 229, 255, 0.3);
+  width: 320px;
+  max-width: 90%;
+  text-align: center;
+}
+
+.card img {
+  max-width: 280px;
+  border-radius: 12px;
+  display: block;
+  margin: 0 auto 20px auto;
+}
+
+/* ======== BOTÃO ======== */
+button {
+  padding: 12px 22px;
+  background: #00E5FF;
+  border: none;
+  border-radius: 8px;
+  color: #001A20;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 10px;
+  transition: all 0.3s ease;
+  font-family: 'Press Start 2P', cursive;
+}
+
+button:hover {
+  background: #00b4d8;
+  transform: scale(1.05);
+}
+
+/* ======== RESPONSIVIDADE ======== */
+@media (max-width: 768px) {
+  h1 { font-size: 12px; }
+  h2 { font-size: 10px; }
+  p { font-size: 8px; }
+  button { font-size: 8px; padding: 10px 16px; }
+  .card { width: 90%; }
+}
+</style>
+</head>
+
+<body>
+<h1>🌊 Emoção detectada:</h1>
+<h2 id="emocaoTitle">Processando...</h2>
+<p id="confTitle"></p>
+
+<div class="card">
+  <img id="imagemEmocao" alt="Imagem relacionada à emoção" />
+  <button onclick="voltar()">Voltar</button>
+</div>
+
+<script>
+/* ======== DADOS DE EMOÇÕES ======== */
+const imagensPorEmocao = {
+  feliz: [
+    'static/mar_feliz/1.png',
+    'static/mar_feliz/2.png'
+  ],
+  triste: [
+    'static/mar_triste/3.png',
+    'static/mar_triste/4.png'
+  ],
+  neutro: [
+    'static/mar_neutro/5.png',
+    'static/mar_neutro/6.png'
+  ]
+};
+
+const traducoes = {
+  happy: 'feliz',
+  sad: 'triste',
+  neutral: 'neutro',
+  angry: 'triste',
+  fearful: 'triste',
+  disgusted: 'triste',
+  surprised: 'feliz'
+};
+
+/* ======== FUNÇÕES ======== */
+function getQueryParam(name) {
+  const params = new URLSearchParams(window.location.search);
+  return params.get(name);
+}
+
+function imagemAleatoria(lista) {
+  return lista[Math.floor(Math.random() * lista.length)];
+}
+
+/* ======== LÓGICA DE EXIBIÇÃO ======== */
+const emocaoOriginal = getQueryParam('emocao') || 'neutral';
+const conf = getQueryParam('conf') || '0';
+const emocaoTraduzida = traducoes[emocaoOriginal] || 'nenhuma';
+
+document.getElementById('emocaoTitle').innerText = emocaoTraduzida.charAt(0).toUpperCase() + emocaoTraduzida.slice(1);
+document.getElementById('confTitle').innerText = `Confiança: ${conf}%`;
+
+if (imagensPorEmocao[emocaoTraduzida] && imagensPorEmocao[emocaoTraduzida].length > 0) {
+  document.getElementById('imagemEmocao').src = imagemAleatoria(imagensPorEmocao[emocaoTraduzida]);
+} else {
+  document.getElementById('imagemEmocao').style.display = 'none';
+}
+
+function voltar() {
+  window.location.href = 'index.html';
+}
+</script>
+</body>
+</html>
